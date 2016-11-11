@@ -19,7 +19,7 @@
 * [VoodooHDA](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqElite8300-i7-HD4000/VoodooHDA.kext.zip) (modified for max volume)
 
 ## Extras
-[Config.plist](https://github.com/Goldfish64/Hackintosh/blob/master/HPCompaqElite8300-i7-HD4000/config.plist) - Very basic, just needs NVIDIA injection, EHC rename, and AsusAICPUPM patch.  
+[Config.plist](https://github.com/Goldfish64/Hackintosh/blob/master/HPCompaqElite8300-i7-HD4000/config.plist) - Very basic, just needs Intel injection, EHC rename, and AsusAICPUPM patch.  
 [SSDT](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqElite8300-i7-HD4000/SSDT.aml) - This is required for proper power management and is meant for an i5-3570. Place in ACPI/patched folder.  
 [VoodooHDA pref pane](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqElite8300-i7-HD4000/VoodooHDA.prefPane.zip) - settings pane for VoodooHDA.  
 [HP logo for System Profiler](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqElite8300-i7-HD4000/SystemLogo.tiff) - spruce up your About this Mac.
