@@ -1,2 +1,2 @@
 # Hackintosh
-Hackintosh stuff
+Hackintosh stuff - currently only setups
