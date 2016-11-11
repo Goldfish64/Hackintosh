@@ -15,8 +15,8 @@
 * [FakeSMC](https://github.com/RehabMan/OS-X-FakeSMC-kozlek)
 * [IntelMausiEthernet](https://bitbucket.org/RehabMan/os-x-intel-network)
 * [VoodooPS2](https://github.com/RehabMan/OS-X-Voodoo-PS2-Controller)
-* [AppleHDADisabler](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/AppleHDADisabler.kext.zip)
-* [VoodooHDA](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/VoodooHDA.kext.zip) (modified for max volume)
+* [AppleHDADisabler](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqElite8300-i7-HD4000/AppleHDADisabler.kext.zip)
+* [VoodooHDA](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqElite8300-i7-HD4000/VoodooHDA.kext.zip) (modified for max volume)
 
 ## Extras
 [Config.plist](https://github.com/Goldfish64/Hackintosh/blob/master/HPCompaqElite8300-i7-HD4000/config.plist) - Very basic, just needs NVIDIA injection, EHC rename, and AsusAICPUPM patch.  
