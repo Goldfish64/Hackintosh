@@ -11,19 +11,15 @@
 * SMBIOS: iMac13,1
 * OSes: Windows 10 Pro and macOS Sierra 10.12
 
-### Required Kexts
+## Required Kexts
 * [FakeSMC](https://github.com/RehabMan/OS-X-FakeSMC-kozlek)
 * [IntelMausiEthernet](https://bitbucket.org/RehabMan/os-x-intel-network)
 * [VoodooPS2](https://github.com/RehabMan/OS-X-Voodoo-PS2-Controller)
 * [AppleHDADisabler](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/AppleHDADisabler.kext.zip)
 * [VoodooHDA](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/VoodooHDA.kext.zip) (modified for max volume)
 
-### [Config.plist](https://github.com/Goldfish64/Hackintosh/blob/master/HPCompaqPro6300-i5-GT730Fermi/config.plist)
-Very basic, just needs NVIDIA injection, EHC rename, and AsusAICPUPM patch
-
-### [SSDT](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/SSDT.aml)
-This is required for proper power management and is meant for an i5-3570. Place in ACPI/patched folder.
-
-### Extras
-[VoodooHDA pref pane](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/VoodooHDA.prefPane.zip) - settings pane for VoodooHDA
-[HP logo for System Profiler](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/SystemLogo.tiff) - spruce up your About this Mac
+## Extras
+[Config.plist](https://github.com/Goldfish64/Hackintosh/blob/master/HPCompaqPro6300-i5-GT730Fermi/config.plist) - Very basic, just needs NVIDIA injection, EHC rename, and AsusAICPUPM patch.  
+[SSDT](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/SSDT.aml) - This is required for proper power management and is meant for an i5-3570. Place in ACPI/patched folder.  
+[VoodooHDA pref pane](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/VoodooHDA.prefPane.zip) - settings pane for VoodooHDA.  
+[HP logo for System Profiler](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/SystemLogo.tiff) - spruce up your About this Mac.
