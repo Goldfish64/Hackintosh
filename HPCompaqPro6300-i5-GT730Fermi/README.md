@@ -23,3 +23,7 @@ Very basic, just needs NVIDIA injection, EHC rename, and AsusAICPUPM patch
 
 ### [SSDT](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/SSDT.aml)
 This is required for proper power management and is meant for an i5-3570. Place in ACPI/patched folder.
+
+### Extras
+[VoodooHDA pref pane](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/VoodooHDA.prefPane.zip) - settings pane for VoodooHDA
+[HP logo for System Profiler](https://github.com/Goldfish64/Hackintosh/raw/master/HPCompaqPro6300-i5-GT730Fermi/SystemLogo.tiff) - spruce up your About this Mac
