@@ -47,7 +47,7 @@ This machine can be fully hotpatched using Clover and SSDTs. Be sure to compile 
 * [Lilu](https://github.com/acidanthera/Lilu)
 * [WhateverGreen](https://github.com/acidanthera/WhateverGreen)
 * [VirtualSMC, along with SMCBatteryManager and SMCProcessor](https://github.com/acidanthera/VirtualSMC)
-* [VoodooPS2 (ALPS version)](https://osxlatitude.com/forums/topic/8285-refined-alps-touchpad-driver)
+* [VoodooPS2 (ALPS version)](https://osxlatitude.com/forums/topic/8285-refined-alps-touchpad-driver) - Kext in repo
 
 Additionally to support the DW1550, these kexts are required:
 * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup)
