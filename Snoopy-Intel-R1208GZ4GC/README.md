@@ -54,7 +54,7 @@ NIC | Built-in quad port Intel I350-AM4 "Powerville"
     * Add
         * SSDT-EC.aml - does not seem to be required on this system
         * SSDT-HPET.aml - needed for HPET _CRS rename, created using [SSDTTime](https://github.com/corpnewt/SSDTTime)
-        * SSDT-PM.aml - needed for proper CPU power management
+        * SSDT-PM.aml - needed for proper CPU power management, created with ssdtPrGen (pending upload)
     * Patch
         * `45484331` to `45483031` - EHC1 to EH01 rename
         * `45484332` to `45483032` - EHC2 to EH02 rename
