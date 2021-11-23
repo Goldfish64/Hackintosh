@@ -10,11 +10,13 @@ The Intel R1208GZ4GC is a 1U server chassis barebones unit with an Intel S2600GZ
 Board | Intel S2600GZ server board | [Tech Specs](https://www.intel.com/content/dam/support/us/en/documents/motherboards/server/sb/s2600gzgl_tps_r2_4.pdf)
 CPUs | Intel Xeon E5-2640v2 "Ivy Bridge-E" @ 2 GHz
 RAM | 64GB PC3-12800R DDR3 ECC RAM | 8x 8GB DIMMs, 4 for each CPU
-GPU | NVIDIA Quadro K600 | Installed in slot 1
+iGPU | Matrox G200E
+GPU | AMD Radeon Pro WX 4100 | Installed in slot 1
 Chipset | Intel C602 "Patsburg"
-Main SSD | 120GB Kingston A400 | Installed in drive bay 6, connected to SATA 0
-Data SSD | 500GB Crucial MX500 | Installed in drive bay 7, connected to SATA 1
+SSD | 120GB Kingston A400 | Installed in drive bay 6, connected to SATA 0
+SSD | 500GB Crucial MX500 | Installed in drive bay 7, connected to SATA 1
 NIC | Built-in quad port Intel I350-AM4 "Powerville"
+NIC | Dual port Intel X540-BT2 | Installed in I/O module slot, uses patched SmallTree driver
 
 
 ## BIOS configuration
@@ -31,58 +33,78 @@ NIC | Built-in quad port Intel I350-AM4 "Powerville"
         * Processor Configuration
             * Processor C3 = Enabled
             * Intel(R) Virtualization Technology = Enabled
-        * PCI Configuration
-            * Onboard Video = Disabled
         * Serial Port Configuration
             * Serial B Enable = Disabled
-    * Boot Options
-        * EFI Optimized Boot = Enabled
-        * Use Legacy Video for EFI OS = Disabled
 
 ## Kexts
 * [Lilu](https://github.com/acidanthera/Lilu)
 * [VirtualSMC](https://github.com/acidanthera/VirtualSMC)
 * [WhateverGreen](https://github.com/acidanthera/WhateverGreen)
-* [AppleMCEReporterDisabler](Kexts/AppleMCEReporterDisabler.kext) (required on Catalina and newer)
-* [C600AHCIInjector](Kexts/C600AHCIInjector.kext) (fancy naming in System Information for AHCI controller)
-* [USBMap](Kexts/USBMap.kext) (USB map injector for MacPro6,1, created with [USBMap](https://github.com/corpnewt/USBMap))
+* [AppleMCEReporterDisabler](AppleMCEReporterDisabler.kext) (required on Catalina and newer)
+* [C600AHCIInjector](C600AHCIInjector.kext) (fancy naming in System Information for AHCI controller)
+* [USBMap](USBMap.kext) (USB map injector for MacPro6,1, created with [USBMap](https://github.com/corpnewt/USBMap))
+* [SmallTreeIntel8259x](Cat-SmallTreeIntel8259x.kext) (patched kext to support non-SmallTree Intel X540 adapters on Catalina or newer, use [this one](HS-SmallTreeIntel8259x.kext) for High Sierra and Mojave)
 
 ## OpenCore
 
 ### Changes from [HEDT Ivy-Bridge-E guide](https://dortania.github.io/OpenCore-Install-Guide/config-HEDT/ivy-bridge-e.html)
 * ACPI
     * Add
-        * SSDT-EC.aml - does not seem to be required on this system
+        * SSDT-EC.aml - fake EC
         * SSDT-HPET.aml - needed for HPET _CRS rename, created using [SSDTTime](https://github.com/corpnewt/SSDTTime)
-        * SSDT-PM.aml - needed for proper CPU power management, created with ssdtPrGen (pending upload)
+        * SSDT-PM.aml - needed for proper CPU power management, created with ssdtPrGen
     * Patch
-        * `45484331` to `45483031` - EHC1 to EH01 rename
-        * `45484332` to `45483032` - EHC2 to EH02 rename
         * `055F435253` to `0558435253` - HPET _CRS to XCRS rename
         * `2200017900` to `2200007900` - RTC IRQ 8 patch
         * `2201007900` to `2200007900` - TIMR IRQ 0 patch
-        * `5F53554E` to `5853554E` - _SUN to XSUN rename
+        * `5F53554E` to `5853554E` - _SUN to XSUN rename, fixes incorrect slot information
 * DeviceProperties
     * Add
         * PciRoot(0x0)/Pci(0x1,0x1)/Pci(0x0,0x0)
             * device-id = `33150000` - fake ID for onboard I350 port 1
+            * model = `Intel I350-AM4 Gigabit Ethernet` - cosmetic model name for System Profiler
         * PciRoot(0x0)/Pci(0x1,0x1)/Pci(0x0,0x1)
             * device-id = `33150000` - fake ID for onboard I350 port 2
+            * model = `Intel I350-AM4 Gigabit Ethernet` - cosmetic model name for System Profiler
         * PciRoot(0x0)/Pci(0x1,0x1)/Pci(0x0,0x2)
             * device-id = `33150000` - fake ID for onboard I350 port 3
+            * model = `Intel I350-AM4 Gigabit Ethernet` - cosmetic model name for System Profiler
         * PciRoot(0x0)/Pci(0x1,0x1)/Pci(0x0,0x3)
             * device-id = `33150000` - fake ID for onboard I350 port 4
+            * model = `Intel I350-AM4 Gigabit Ethernet` - cosmetic model name for System Profiler
+        * PciRoot(0x0)/Pci(0x1C,0x7)/Pci(0x0,0x0)
+            * disable-gpu = `01000000` - hides iGPU from macOS
+        * PciRoot(0x0)/Pci(0x3,0x0)/Pci(0x0,0x0)
+            * AAPL,slot-name = `Slot-1` - cosmetic slot name for System Profiler
+        * PciRoot(0x0)/Pci(0x2,0x0)/Pci(0x0,0x0)
+            * AAPL,slot-name = `I/O module` - cosmetic slot name for System Profiler
+            * model = `Intel X540-BT2 10 Gigabit Ethernet` - cosmetic model name for System Profiler
+        * PciRoot(0x0)/Pci(0x2,0x0)/Pci(0x0,0x1)
+            * AAPL,slot-name = `I/O module` - cosmetic slot name for System Profiler
+            * model = `Intel X540-BT2 10 Gigabit Ethernet` - cosmetic model name for System Profiler
 * Kexts
     * Add
         * Lilu.kext
         * VirtualSMC.kext
         * WhateverGreen.kext
+        * AppleALCU.kext
         * USBMap.kext
         * AppleMCEReporterDisabler.kext
             * MinKernel = 19.0.0
         * C600AHCIInjector.kext
+        * HS-SmallTreeIntel8259x.kext
+            * MinKernel = 17.0.0
+            * MaxKernel = 18.99.99
+        * Cat-SmallTreeIntel8259x.kext
+            * MinKernel = 19.0.0
 * NVRAM
     * Add
         * 7C436110-AB2A-4BBB-A880-FE41995C9F82
-            * boot-args - needs `npci=0x2000`
+            * boot-args - add `npci=0x2000`
 
+## SmallTree patches
+Below patches out the subsystem ID check in the probe() function:
+
+```0FB78B14 15000083 F90A0F85 XXXXXXXX```  
+to  
+```0FB78B14 15000083 F90A9090 90909090```  
