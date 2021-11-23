@@ -42,7 +42,7 @@ NIC | Dual port Intel X540-BT2 | Installed in I/O module slot, uses patched Smal
 * [WhateverGreen](https://github.com/acidanthera/WhateverGreen)
 * [AppleMCEReporterDisabler](AppleMCEReporterDisabler.kext) (required on Catalina and newer)
 * [C600AHCIInjector](C600AHCIInjector.kext) (fancy naming in System Information for AHCI controller)
-* [USBMap](USBMap.kext) (USB map injector for MacPro6,1, created with [USBMap](https://github.com/corpnewt/USBMap))
+* [USBMap](USBMap.kext) (USB map injector for MacPro6,1, created with [USBToolbox](https://github.com/USBToolBox/tool))
 * [SmallTreeIntel8259x](Cat-SmallTreeIntel8259x.kext) (patched kext to support non-SmallTree Intel X540 adapters on Catalina or newer, use [this one](HS-SmallTreeIntel8259x.kext) for High Sierra and Mojave)
 
 ## OpenCore
