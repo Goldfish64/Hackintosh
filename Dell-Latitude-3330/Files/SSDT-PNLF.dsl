@@ -1,3 +1,7 @@
+//
+// Dell Latitude 3330
+// Goldfish64
+//
 // Adding PNLF device for WhateverGreen.kext and others.
 // This is a modified PNLF version originally taken from RehabMan/OS-X-Clover-Laptop-Config repository:
 // https://raw.githubusercontent.com/RehabMan/OS-X-Clover-Laptop-Config/master/hotpatch/SSDT-PNLF.dsl
@@ -5,9 +9,9 @@
 //
 // Licensed under GNU General Public License v2.0
 // https://github.com/RehabMan/OS-X-Clover-Laptop-Config/blob/master/License.md
-// IGPU name is VID on Latitude 3330
-// Goldfish64
 //
+// IGPU name is VID on Latitude 3330
+
 #define FBTYPE_SANDYIVY 1
 #define FBTYPE_HSWPLUS 2
 #define FBTYPE_CFL 3
@@ -19,14 +23,14 @@
 #define CUSTOM_PWMMAX_1499 0x1499
 #define COFFEELAKE_PWMMAX 0xffff
 
-DefinitionBlock("", "SSDT", 2, "ACDT", "PNLF", 0)
+DefinitionBlock ("", "SSDT", 2, "ACDT", "PNLF", 0)
 {
-    External(RMCF.BKLT, IntObj)
-    External(RMCF.LMAX, IntObj)
-    External(RMCF.LEVW, IntObj)
-    External(RMCF.GRAN, IntObj)
-    External(RMCF.FBTP, IntObj)
-    External(\_SB.PCI0.VID, DeviceObj)
+    External (RMCF.BKLT, IntObj)
+    External (RMCF.LMAX, IntObj)
+    External (RMCF.LEVW, IntObj)
+    External (RMCF.GRAN, IntObj)
+    External (RMCF.FBTP, IntObj)
+    External (_SB_.PCI0.VID, DeviceObj)
     
     If (_OSI ("Darwin")) {
         Scope (\_SB.PCI0.VID)
@@ -34,11 +38,10 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "PNLF", 0)
             OperationRegion (RMP3, PCI_Config, Zero, 0x14)
 
             // For backlight control
-            Device(PNLF)
+            Device (PNLF)
             {
-             // Name(_ADR, Zero)
-                Name(_HID, EisaId("APP0002"))
-                Name(_CID, "backlight")
+                Name (_HID, EisaId("APP0002"))
+                Name (_CID, "backlight")
                 // _UID is set depending on PWMMax to match profiles in WhateverGreen.kext https://github.com/acidanthera/WhateverGreen/blob/1.4.7/WhateverGreen/kern_weg.cpp#L32
                 // 14: Sandy/Ivy 0x710
                 // 15: Haswell/Broadwell 0xad9
@@ -47,13 +50,13 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "PNLF", 0)
                 // 18: custom LMAX=0x1499
                 // 19: CoffeeLake 0xffff
                 // 99: Other (requires custom profile using WhateverGreen.kext via DeviceProperties applbkl-name and applbkl-data)
-                Name(_UID, 0)
+                Name (_UID, 0)
                 Name (_STA, 0x0B)
         
-                Field(^RMP3, AnyAcc, NoLock, Preserve)
+                Field (^RMP3, AnyAcc, NoLock, Preserve)
                 {
-                    Offset(0x02), GDID,16,
-                    Offset(0x10), BAR1,32,
+                    Offset (0x02), GDID,16,
+                    Offset (0x10), BAR1,32,
                 }
 
                 // IGPU PWM backlight register descriptions:
@@ -65,26 +68,26 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "PNLF", 0)
                 //   LEVX PWMMax except FBTYPE_HSWPLUS combo of max/level (Sandy/Ivy stored in MSW)
                 //   LEVD level of backlight for Coffeelake
                 //   PCHL not currently used
-                OperationRegion(RMB1, SystemMemory, BAR1 & ~0xF, 0xe1184)
+                OperationRegion (RMB1, SystemMemory, BAR1 & ~0xF, 0xe1184)
                 Field(RMB1, AnyAcc, Lock, Preserve)
                 {
-                    Offset(0x48250),
+                    Offset (0x48250),
                     LEV2, 32,
                     LEVL, 32,
-                    Offset(0x70040),
+                    Offset (0x70040),
                     P0BL, 32,
-                    Offset(0xc2000),
+                    Offset (0xc2000),
                     GRAN, 32,
-                    Offset(0xc8250),
+                    Offset (0xc8250),
                     LEVW, 32,
                     LEVX, 32,
                     LEVD, 32,
-                    Offset(0xe1180),
+                    Offset (0xe1180),
                     PCHL, 32,
                 }
 
                 // INI1 is common code used by FBTYPE_HSWPLUS and FBTYPE_CFL
-                Method(INI1, 1)
+                Method (INI1, 1)
                 {
                     // INTEL OPEN SOURCE HD GRAPHICS, INTEL IRIS GRAPHICS, AND INTEL IRIS PRO GRAPHICS PROGRAMMER'S REFERENCE MANUAL (PRM)
                     // FOR THE 2015-2016 INTEL CORE PROCESSORS, CELERON PROCESSORS AND PENTIUM PROCESSORS BASED ON THE "SKYLAKE" PLATFORM
@@ -112,7 +115,7 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "PNLF", 0)
                     }
                 }
 
-                Method(_INI)
+                Method (_INI)
                 {
                     // IntelBacklight.kext takes care of this at load time...
                     // If RMCF.BKLT does not exist, it is assumed you want to use AppleBacklight.kext...
@@ -210,7 +213,7 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "PNLF", 0)
                                 Local2 = SKYLAKE_PWMMAX
                             }
                         }
-                        INI1(Local4)
+                        INI1 (Local4)
                         // change/scale only if different than current...
                         Local1 = ^LEVX >> 16
                         If (!Local1) { Local1 = Local2 }

@@ -1,5 +1,6 @@
 //
-// "Becky" Dell Latitude 3330
+// Dell Latitude 3330
+// Goldfish64
 //
 // _PRW method definitions to avoid instant wakeups on macOS
 //
@@ -18,6 +19,7 @@ DefinitionBlock ("", "SSDT", 2, "FISH", "PRW", 0x00000000)
     External (\_SB.PCI0.EHC2.XPRW, MethodObj)
     External (\_SB.PCI0.XHC.XPRW, MethodObj)
 
+    // HDEF audio device
     Scope (\_SB.PCI0.HDEF)
     {
         Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
@@ -37,6 +39,7 @@ DefinitionBlock ("", "SSDT", 2, "FISH", "PRW", 0x00000000)
         }
     }
 
+    // LAN device
     Scope (\_SB.PCI0.GLAN)
     {
         Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
@@ -56,6 +59,7 @@ DefinitionBlock ("", "SSDT", 2, "FISH", "PRW", 0x00000000)
         }
     }
 
+    // EHCI #1 controller
     Scope (\_SB.PCI0.EHC1)
     {
         Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
@@ -111,6 +115,7 @@ DefinitionBlock ("", "SSDT", 2, "FISH", "PRW", 0x00000000)
         }
     }
 
+    // EHCI #2 controller
     Scope (\_SB.PCI0.EHC2)
     {
         Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
@@ -166,6 +171,7 @@ DefinitionBlock ("", "SSDT", 2, "FISH", "PRW", 0x00000000)
         }
     }
 
+    // XHCI controller
     Scope (\_SB.PCI0.XHC)
     {
         Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
@@ -221,6 +227,7 @@ DefinitionBlock ("", "SSDT", 2, "FISH", "PRW", 0x00000000)
         }
     }
 
+    // Disable duplicate graphics device
     Scope (\_SB.PCI0.GFX0)
     {
         Method (_STA, 0, NotSerialized)  // _STA: Status

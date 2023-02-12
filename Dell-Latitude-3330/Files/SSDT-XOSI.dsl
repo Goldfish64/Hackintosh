@@ -1,8 +1,8 @@
 //
-// "Becky" Dell Latitude 3330
+// Dell Latitude 3330
+// Goldfish64
 //
 // Spoof macOS as Windows Vista
-// Goldfish64
 //
 DefinitionBlock ("", "SSDT", 2, "DRTNIA", "XOSI", 0x00001000)
 {

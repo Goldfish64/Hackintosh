@@ -1,9 +1,9 @@
-# Dell Latitude 3330 "Becky"
+# Dell Latitude 3330
 
 ![Dell Latitude 3330](Docs/latitude3330.png)
 
 ## Overview
-macOS High Sierra on OpenCore [0.7.5](https://github.com/acidanthera/OpenCorePkg/releases/tag/0.7.5)
+macOS High Sierra on OpenCore [0.8.8](https://github.com/acidanthera/OpenCorePkg/releases/tag/0.8.8)
 
 ## Specifications
 | Component | Name |
@@ -29,9 +29,10 @@ Dell A10 BIOS
 --- | ---
 [SSDT-HPET](Files/SSDT-HPET.dsl) | HPET IRQ assignments, created with CorpNewt's [SSDTTime](https://github.com/corpnewt/SSDTTime)
 [SSDT-IMEI](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/Source/SSDT-IMEI.dsl) | Provides IMEI device for HD3000 compatibility on 7 series chipset
+[SSDT-EC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EC.dsl) | Provides fake EC device
 [SSDT-PNLF](Files/SSDT-PNLF.dsl) | Screen brightness support
 [SSDT-PRW](Files/SSDT-PRW.dsl) | Prevents instant wakes from sleep; disables GFX0 device under macOS
-[SSDT-XOSI](Files/SSDT-XOSI.dsl) | _OSI replacement identifing macOS as Windows 7
+[SSDT-XOSI](Files/SSDT-XOSI.dsl) | _OSI replacement identifing macOS as Windows Vista
 
 ### DeviceProperties
 * PciRoot(0x0)/Pci(0x2,0x0)
@@ -46,17 +47,18 @@ Dell A10 BIOS
 ### Kexts
 |Kext|Version|Notes|
 |---|---|---|
-AppleALC | [1.6.6](https://github.com/acidanthera/AppleALC/releases/tag/1.6.6) | Audio support
+AppleALC | [1.7.8](https://github.com/acidanthera/AppleALC/releases/tag/1.7.8) | Audio support
 BrightnessKeys | [1.0.2](https://github.com/acidanthera/BrightnessKeys/releases/tag/1.0.2) | Handles F4 and F5 brightness keys
+FeatureUnlock | [1.1.2](https://github.com/acidanthera/FeatureUnlock/releases/tag/1.1.2) | Enables Night Shift on unsupported systems
 IntelMausi | [1.0.7](https://github.com/acidanthera/IntelMausi/releases/tag/1.0.7) | Ethernet support
 IOath3kfrmwr | [1.2.1](https://github.com/RehabMan/OS-X-Atheros-3k-Firmware) | Bluetooth support
-Lilu | [1.5.7](https://github.com/acidanthera/Lilu/releases/tag/1.5.7)
-RestrictEvents | TBD | Enables Memory tab in System Information
-SMCBatteryManager | [1.2.7](https://github.com/acidanthera/VirtualSMC/releases/tag/1.2.7) | Battery support
+Lilu | [1.6.3](https://github.com/acidanthera/Lilu/releases/tag/1.6.3)
+RestrictEvents | [1.0.9](https://github.com/acidanthera/RestrictEvents/releases/tag/1.0.9) | Enables Memory tab in System Information
+SMCBatteryManager | [1.3.0](https://github.com/acidanthera/VirtualSMC/releases/tag/1.3.0) | Battery support
 USBMap | [N/A](Files/USBMap.kext) | USB map created with CorpNewt's [USBMap](https://github.com/corpnewt/USBMap)
-VirtualSMC | [1.2.7](https://github.com/acidanthera/VirtualSMC/releases/tag/1.2.7) | SMC emulator
+VirtualSMC | [1.3.0](https://github.com/acidanthera/VirtualSMC/releases/tag/1.3.0) | SMC emulator
 VoodooPS2Controller-R6Bronxteck.kext | [N/A](Files/VoodooPS2Controller-R6Bronxteck.kext) | PS/2 support
-WhateverGreen | [1.5.5](https://github.com/acidanthera/WhateverGreen/releases/tag/1.5.5) | Graphics support
+WhateverGreen | [1.6.3](https://github.com/acidanthera/WhateverGreen/releases/tag/1.6.3) | Graphics support
 
 ### PlatformInfo
 * Use MacBookAir4,2 for SystemProductName
