@@ -1,0 +1,40 @@
+CPU BrandString: Intel(R) Core(TM)2 Quad CPU    Q8200  @ 2.33GHz
+MicrocodeRevision: 0x00000A07
+Virtualization 0
+CPUID 0001067A 00040800 0408E39D BFEBFBFF
+ExtSigEcx 00000001
+ExtSigEdx 20100800
+Type 0x00
+Family 0x06
+Model 0x17
+ExtModel 0x01
+ExtFamily 0x00
+Stepping 0x0A
+Features 0x0408E39DBFEBFBFF
+ExtFeatures 0x0000000120100800
+Signature 0x0001067A
+Brand 0x00
+AppleProcessorType 0x0402
+CstConfigLock 0
+CpuGeneration 4
+MaxId 0x0000000D
+MaxExtId 0x80000008
+PackageCount 1
+CoreCount 4
+ThreadCount 4
+ExternalClock 333
+ARTFrequency 0
+CPUFrequency 2333291805
+CPUFrequencyFromTSC 2333291805
+CPUFrequencyFromART 0
+TscAdjust 0
+CPUFrequencyFromApple 0
+CPUFrequencyFromVMT 0
+FSBFrequency 333327400
+
+CPU00:
+MSR_IA32_MISC_ENABLE: 0x4062972489
+MSR_IA32_EXT_CONFIG: 0xC6790B00
+MSR_FSB_FREQ: 0x80000A04
+MSR_IA32_PERF_STATUS: 0x616072006000720
+
