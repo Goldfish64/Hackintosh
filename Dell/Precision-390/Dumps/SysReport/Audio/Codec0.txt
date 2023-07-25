@@ -1,0 +1,121 @@
+Device path: PciRoot(0x0)/Pci(0x1B,0x0)/VenMsg(A9003FEB-D806-41DB-A491-5405FEEF46C3,00000000)
+Address: 0x0
+
+Codec: Sigmatel STAC9220
+AFG Function Id: 0x1 (unsol 1)
+Vendor Id: 0x83847690
+Revision Id: 0x102201
+Default PCM:
+    rates [0x7E0]: 44100 48000 88200 96000 176400 192000
+    bits [0xE]: 16 20 24
+    formats [0x1]: PCM
+Default Amp-In caps: N/A
+Default Amp-Out caps: ofs=0x1F, nsteps=0x1F, stepsize=0x05, mute=1
+Node 0x02 (2) [Audio Output] wcaps 0xD0401: Stereo
+  Converter: stream=0, channel=0
+Node 0x03 (3) [Audio Input] wcaps 0x1D0541: Stereo
+  Converter: stream=0, channel=0
+  Connection: 1
+     0x0A
+Node 0x04 (4) [Audio Input] wcaps 0x140311: Stereo Digital
+  Converter: stream=0, channel=0
+  PCM:
+    rates [0x160]: 44100 48000 96000
+    bits [0xE]: 16 20 24
+    formats [0x5]: PCM AC3
+  Connection: 1
+     0x08
+Node 0x05 (5) [Audio Output] wcaps 0x40211: Stereo Digital
+  Converter: stream=0, channel=0
+  PCM:
+    rates [0x1E0]: 44100 48000 88200 96000
+    bits [0xE]: 16 20 24
+    formats [0x5]: PCM AC3
+Node 0x06 (6) [Vendor Defined Widget] wcaps 0xF30201: Stereo Digital
+Node 0x07 (7) [Audio Selector] wcaps 0x300901: Stereo R/L
+  Connection: 3
+     0x02 0x08 0x0A
+Node 0x08 (8) [Pin Complex] wcaps 0x430681: Stereo Digital
+  Pincap 0x00010024: IN EAPD Detect
+  EAPD 0x2: EAPD
+  Pin Default 0x40F000F0: [None] Other at Ext N/A
+    Conn = Unknown, Color = Unknown
+    DefAssociation = 0xF, Sequence = 0x0
+Pin-ctls: 0x00: VREF_HIZ
+Node 0x09 (9) [Pin Complex] wcaps 0x400301: Stereo Digital
+  Pincap 0x00000010: OUT
+  Pin Default 0x40F000F1: [None] Other at Ext N/A
+    Conn = Unknown, Color = Unknown
+    DefAssociation = 0xF, Sequence = 0x1
+Pin-ctls: 0x00: VREF_HIZ
+  Connection: 2
+     0x05 0x0A
+Node 0x0A (10) [Audio Selector] wcaps 0x30090D: Stereo Amp-Out R/L
+  Amp-Out caps: ofs=0x00, nsteps=0x0F, stepsize=0x05, mute=1
+  Amp-Out vals: [0x80 0x80]
+  Connection: 1
+     0x0C
+Node 0x0B (11) [Audio Selector] wcaps 0x300105: Stereo Amp-Out
+  Amp-Out caps: N/A
+  Amp-Out vals: [0x9F 0x9F]
+  Connection: 1
+     0x07
+Node 0x0C (12) [Audio Selector] wcaps 0x30010D: Stereo Amp-Out
+  Amp-Out caps: ofs=0x00, nsteps=0x04, stepsize=0x27, mute=0
+  Amp-Out vals: [0x00 0x00]
+  Connection: 5
+     0x10 0x0F 0x0E 0x0D 0x12
+Node 0x0D (13) [Pin Complex] wcaps 0x400181: Stereo
+  Pincap 0x0000003F: IN OUT HP Trigger Detect
+  Pin Default 0x0221101F: [Jack] HP Out at Ext Front
+    Conn = 1/8, Color = Black
+    DefAssociation = 0x1, Sequence = 0xF
+Pin-ctls: 0x00: VREF_HIZ
+  Connection: 1
+     0x0B
+Node 0x0E (14) [Pin Complex] wcaps 0x400181: Stereo
+  Pincap 0x0000003F: IN OUT HP Trigger Detect
+  Pin Default 0x01014010: [Jack] Line Out at Ext Rear
+    Conn = 1/8, Color = Green
+    DefAssociation = 0x1, Sequence = 0x0
+Pin-ctls: 0x00: VREF_HIZ
+  Connection: 1
+     0x0B
+Node 0x0F (15) [Pin Complex] wcaps 0x400181: Stereo
+  Pincap 0x00000037: IN OUT Trigger Detect
+  Pin Default 0x0181302E: [Jack] Line In at Ext Rear
+    Conn = 1/8, Color = Blue
+    DefAssociation = 0x2, Sequence = 0xE
+Pin-ctls: 0x20: IN VREF_HIZ
+  Connection: 1
+     0x0B
+Node 0x10 (16) [Pin Complex] wcaps 0x400181: Stereo
+  Pincap 0x00001737: IN OUT Trigger Detect VREF_HIZ VREF_GRD VREF_50 VREF_80
+  Pin Default 0x02A11020: [Jack] Mic at Ext Front
+    Conn = 1/8, Color = Black
+    DefAssociation = 0x2, Sequence = 0x0
+Pin-ctls: 0x20: IN VREF_HIZ
+  Connection: 1
+     0x0B
+Node 0x11 (17) [Pin Complex] wcaps 0x400104: Mono Amp-Out
+  Amp-Out caps: N/A
+  Amp-Out vals: [0x9F]
+  Pincap 0x00000010: OUT
+  Pin Default 0x40F000F2: [None] Other at Ext N/A
+    Conn = Unknown, Color = Unknown
+    DefAssociation = 0xF, Sequence = 0x2
+Pin-ctls: 0x00: VREF_HIZ
+  Connection: 1
+     0x13
+Node 0x12 (18) [Pin Complex] wcaps 0x400001: Stereo
+  Pincap 0x00000020: IN
+  Pin Default 0x40F000F3: [None] Other at Ext N/A
+    Conn = Unknown, Color = Unknown
+    DefAssociation = 0xF, Sequence = 0x3
+Pin-ctls: 0x20: IN VREF_HIZ
+Node 0x13 (19) [Audio Mixer] wcaps 0x200100: Mono
+  Connection: 1
+     0x07
+Node 0x14 (20) [Beep Generator Widget] wcaps 0x70000C: Mono Amp-Out
+  Amp-Out caps: ofs=0x03, nsteps=0x03, stepsize=0x17, mute=1
+  Amp-Out vals: [0x83]
